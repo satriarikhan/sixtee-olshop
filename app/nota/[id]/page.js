@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Navbar from '../../../components/Navbar';
 import { getOrderById } from '../../../lib/db';
+import NotaPaymentSection from './NotaPaymentSection';
 
 export const dynamic = 'force-dynamic';
 
@@ -102,21 +103,14 @@ export default async function NotaPage({ params }) {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div style={{ display: 'flex', gap: '14px', marginTop: '28px' }}>
-              <Link className="button button-primary" href="/">
-                Kembali ke Beranda
-              </Link>
-              <Link className="button button-soft" href="/katalog">
-                Lanjut Belanja Lagi
-              </Link>
-            </div>
+            {/* Payment Actions */}
+            <NotaPaymentSection order={order} />
           </div>
         ) : (
           <div className="empty-state">
             <p>Rincian pesanan #{id} tidak ditemukan.</p>
             <Link className="button button-primary" href="/">
-              Kembali ke Beranda
+              Lanjut Belanja
             </Link>
           </div>
         )}
