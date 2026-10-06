@@ -294,7 +294,7 @@ export default function CheckoutPage() {
 
       const payload = {
         items: cartItems,
-        address: fullAddressString,
+        address: streetAddress.trim(),
         province: selectedProvince.name,
         provinceId: String(selectedProvince.id || '').slice(0, 2),
         district: selectedRegency.name,

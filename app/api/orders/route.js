@@ -56,15 +56,21 @@ export async function POST(request) {
 
     const totalPembelian = subtotal + shippingCost;
 
-    // Ensure id_prov column allows longer string, or fallback to 2-char code
+    // Attempt to widen table columns so future long addresses are supported
     try {
+      await client.query('ALTER TABLE tb_pembelian ALTER COLUMN alamat TYPE TEXT');
       await client.query('ALTER TABLE tb_pembelian ALTER COLUMN id_prov TYPE VARCHAR(100)');
+      await client.query('ALTER TABLE tb_pembelian ALTER COLUMN kabupaten TYPE VARCHAR(100)');
+      await client.query('ALTER TABLE tb_pembelian ALTER COLUMN kecamatan TYPE VARCHAR(100)');
     } catch {
       // Ignore if table cannot be altered
     }
 
-    // Safe id_prov value: 2-digit code for VARCHAR(2) or full province if altered
+    // Ensure all values fit strict varchar limits if table could not be altered
     const provCode = String(body.provinceId || '').trim().slice(0, 2) || province.slice(0, 2) || '00';
+    const safeAddress = address.slice(0, 50);
+    const safeDistrict = district.slice(0, 50);
+    const safeSubdistrict = subdistrict.slice(0, 50);
 
     await client.query('BEGIN');
 
@@ -73,7 +79,7 @@ export async function POST(request) {
        (id_pelanggan, id_prov, kabupaten, kecamatan, tanggal_pembelian, total_pembelian, tarif, alamat, status) 
        VALUES ($1, $2, $3, $4, CURRENT_DATE, $5, $6, $7, $8) 
        RETURNING id_pembelian`,
-      [user.id_pelanggan, provCode, district, subdistrict, totalPembelian, shippingCost, address, 'Pending']
+      [user.id_pelanggan, provCode, safeDistrict, safeSubdistrict, totalPembelian, shippingCost, safeAddress, 'Pending']
     );
 
     const orderId = order.rows[0].id_pembelian;
