@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import CartBadge from './CartBadge';
+import UserNav from './UserNav';
 
 export default function Navbar() {
   return (
@@ -11,7 +12,7 @@ export default function Navbar() {
           <Link href="/katalog">Katalog</Link>
           <CartBadge />
           <Link href="/ulasan">Ulasan</Link>
-          <Link href="/login">Login</Link>
+          <UserNav />
         </nav>
         <Link className="nav-action" href="/katalog">Mulai belanja <span aria-hidden="true">-&gt;</span></Link>
       </div>

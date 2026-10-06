@@ -187,3 +187,39 @@ a { color:inherit; text-decoration:none; }
   .nota-banner { flex-direction: column; align-items: flex-start; gap: 12px; }
   .nota-total-box { text-align: left; }
 }
+
+/* Reviews Page Styles */
+.reviews-page-grid { display: grid; gap: 32px; grid-template-columns: 380px 1fr; }
+.review-form-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 24px; position: sticky; top: 96px; }
+.reviewer-info-pill { align-items: center; background: #f8fafc; border: 1px solid var(--line); border-radius: 10px; display: flex; gap: 12px; padding: 10px 14px; }
+.reviewer-avatar { align-items: center; background: var(--brand); border-radius: 50%; color: #fff; display: flex; font-size: 14px; font-weight: 700; height: 36px; justify-content: center; width: 36px; flex-shrink: 0; }
+.reviewer-avatar.sm { font-size: 12px; height: 32px; width: 32px; }
+.interactive-stars-wrap { align-items: center; display: flex; flex-wrap: wrap; gap: 4px; }
+.star-pick-btn { background: none; border: 0; color: #cbd5e1; cursor: pointer; font-size: 30px; line-height: 1; padding: 0 2px; transition: color .15s, transform .15s; }
+.star-pick-btn:hover { transform: scale(1.15); }
+.star-pick-btn.active { color: #f59e0b; }
+.star-rating-hint { color: #d97706; font-size: 12px; font-weight: 700; margin-left: 8px; }
+.review-login-prompt { background: #fffaf7; border: 1px dashed var(--line); border-radius: 12px; display: flex; flex-direction: column; align-items: center; padding: 32px 18px; text-align: center; }
+.reviews-summary-bar { align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 20px; padding: 18px 24px; }
+.rating-overview { align-items: center; display: flex; gap: 14px; }
+.rating-big-number { color: var(--brand); font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 800; line-height: 1; }
+.reviews-filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-pill { background: #fff; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600; padding: 7px 14px; transition: all .2s; }
+.filter-pill:hover { border-color: var(--ink); color: var(--ink); }
+.filter-pill.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+.reviews-cards-list { display: grid; gap: 16px; }
+.review-card-item { background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 22px; transition: transform .2s ease; }
+.review-card-top { align-items: center; display: flex; justify-content: space-between; gap: 12px; }
+.review-date-badge { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.reviewed-product-pill { align-items: center; background: #fff6f3; border: 1px solid #fed7cc; border-radius: 8px; display: inline-flex; gap: 8px; margin: 6px 0 10px; padding: 6px 12px; }
+.reviewed-product-thumb { border-radius: 4px; height: 26px; object-fit: cover; width: 26px; }
+.reviewed-product-title { color: var(--ink); font-size: 13px; }
+.reviewed-product-title:hover { color: var(--brand); text-decoration: underline; }
+.review-comment-body { color: #334155; font-size: 14px; line-height: 1.65; margin: 0; }
+
+@media (max-width: 900px) {
+  .reviews-page-grid { grid-template-columns: 1fr; }
+  .review-form-card { position: static; }
+  .reviews-summary-bar { flex-direction: column; align-items: flex-start; }
+}
+

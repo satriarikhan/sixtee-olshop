@@ -14,10 +14,20 @@ export default function LoginPage() {
     setLoading(true);
     setMessage('');
     const form = new FormData(event.currentTarget);
-    const response = await fetch('/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(form)) });
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(form)),
+    });
     const data = await response.json();
-    if (!response.ok) { setMessage(data.message); setLoading(false); return; }
-    router.push('/');
+    if (!response.ok) {
+      setMessage(data.message || 'Login gagal.');
+      setLoading(false);
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    const redirectUrl = params.get('redirect') || '/';
+    router.push(redirectUrl);
     router.refresh();
   }
 
