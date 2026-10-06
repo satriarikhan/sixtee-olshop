@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CartBadge from './CartBadge';
 
 export default function Navbar() {
   return (
@@ -8,7 +9,7 @@ export default function Navbar() {
         <nav className="main-nav" aria-label="Navigasi utama">
           <Link href="/">Beranda</Link>
           <Link href="/katalog">Katalog</Link>
-          <Link href="/keranjang">Keranjang</Link>
+          <CartBadge />
           <Link href="/ulasan">Ulasan</Link>
           <Link href="/login">Login</Link>
         </nav>
