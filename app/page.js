@@ -29,7 +29,7 @@ export default async function HomePage() {
         </section>
         <section className="shell home-section">
           <div className="section-heading"><div><span className="eyebrow">PREVIEW KATALOG</span><h2>Beberapa favorit minggu ini.</h2></div><Link href="/katalog">Buka katalog -&gt;</Link></div>
-          <div className="product-grid">{products.slice(0, 4).map((product) => <ProductCard key={product.id_produk} product={product} />)}</div>
+          <div className="product-grid">{products.slice(0, 8).map((product) => <ProductCard key={product.id_produk} product={product} />)}</div>
         </section>
       </main>
     </>

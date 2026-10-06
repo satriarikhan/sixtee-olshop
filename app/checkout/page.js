@@ -284,6 +284,7 @@ export default function CheckoutPage() {
       // Assemble full address
       let fullAddressParts = [streetAddress.trim()];
       if (selectedVillage?.name) fullAddressParts.push(`Kel/Desa: ${selectedVillage.name}`);
+      if (selectedProvince?.name) fullAddressParts.push(`Provinsi: ${selectedProvince.name}`);
       if (postalCode.trim()) fullAddressParts.push(`Kode Pos: ${postalCode.trim()}`);
       if (deliveryNote.trim()) fullAddressParts.push(`(Catatan: ${deliveryNote.trim()})`);
       if (recipientName.trim()) fullAddressParts.push(`Penerima: ${recipientName.trim()}`);
@@ -295,6 +296,7 @@ export default function CheckoutPage() {
         items: cartItems,
         address: fullAddressString,
         province: selectedProvince.name,
+        provinceId: String(selectedProvince.id || '').slice(0, 2),
         district: selectedRegency.name,
         subdistrict: selectedDistrict.name,
         shippingCost: shippingCost,

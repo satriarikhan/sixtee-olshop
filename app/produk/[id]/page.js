@@ -31,6 +31,14 @@ export default async function ProductPage({ params }) {
               Rp {Number(product.harga_produk).toLocaleString('id-ID')}
             </strong>
             <p>{product.deskripsi_produk}</p>
+            <div style={{ margin: '18px 0', padding: '14px 18px', background: '#f8fafc', borderRadius: '10px', border: '1px solid var(--line)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', fontSize: '13px' }}>
+                <div><span style={{ color: 'var(--muted)' }}>Berat Produk:</span> <strong>{product.berat_produk || 500} gram</strong></div>
+                <div><span style={{ color: 'var(--muted)' }}>Kondisi:</span> <strong>Baru (100% Original)</strong></div>
+                <div><span style={{ color: 'var(--muted)' }}>Ketersediaan:</span> <strong style={{ color: '#16a34a' }}>Stok Ready</strong></div>
+                <div><span style={{ color: 'var(--muted)' }}>Layanan:</span> <strong>Pengiriman Seluruh Indonesia</strong></div>
+              </div>
+            </div>
             <AddToCartBox productId={product.id_produk} />
           </div>
         </div>
